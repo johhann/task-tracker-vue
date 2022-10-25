@@ -1,5 +1,5 @@
 <template>
-    <form @submit="saveTask()">
+    <form @submit.prevent="saveTask()">
         <div>
             <label for="">Title: </label>
             <input type="text" name="title" v-model="title" id="">
@@ -31,13 +31,7 @@
             }
         },
         methods: {
-            saveTask(e){
-                e.preventDefault()
-
-                if(!this.title){
-                    alert('Please fill title input.');
-                }
-
+            saveTask(){
                 const newTask = {
                     id: Math.floor(Math.random() * 1000),
                     title: this.title,
