@@ -1,5 +1,7 @@
 <template>
-    <h2>Task Tracker <Button title="Add Task" color="green" /></h2>
+    <h2>Task Tracker
+        <Button @toggle-add-task="$emit('showAddTask')" :title= "taskLabel ? 'Close' : 'Add Task'" :color="taskLabel ? 'red' : 'green'" />
+    </h2>
 
 </template>
 
@@ -10,6 +12,10 @@
         components: {
             Button
         },
+        props: {
+            taskLabel: Boolean,
+            color: String
+        }
     }
 </script>
 

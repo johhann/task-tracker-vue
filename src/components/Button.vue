@@ -11,7 +11,7 @@
         },
         methods: {
             clicked() {
-                console.log('Here');
+                this.$emit('toggle-add-task')
             }
         }
     }
@@ -25,5 +25,6 @@
         font-weight: bold;
         color: aliceblue;
         border-radius: 3px;
+        cursor: pointer;
     }
 </style>

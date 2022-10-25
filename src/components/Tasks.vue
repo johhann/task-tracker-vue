@@ -14,7 +14,8 @@
         },
         props:{
             tasks: Object
-        }
+        },
+        emits: ['deleteTask', 'toggle-completed']
     }
 </script>
 

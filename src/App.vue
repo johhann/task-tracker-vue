@@ -1,6 +1,9 @@
 <template>
     <div class="container">
-        <Header/>
+        <Header @showAddTask="showAddTask()" :taskLabel="showAddTaskForm" />
+        <div v-show="showAddTaskForm">
+            <AddTask @add-task="addTask" :tasks="tasks"/>
+        </div>
         <Tasks @delete-task="deleteTask" @toggle-completed="toggleCompleted" :tasks="tasks"/>
     </div>
 </template>
@@ -9,16 +12,19 @@
 
     import Header from "./components/Header";
     import Tasks from "@/components/Tasks";
+    import AddTask from "@/components/AddTask";
 
     export default {
         name: 'App',
         components: {
             Header,
+            AddTask,
             Tasks
         },
         data() {
             return {
-                tasks: []
+                tasks: [],
+                showAddTaskForm: false
             }
         },
         methods: {
@@ -29,11 +35,17 @@
             },
             toggleCompleted(id) {
                 this.tasks = this.tasks.map((task) => task.id === id ?
-                    {...task, completed:!task.completed } : task
+                    {...task, completed: !task.completed} : task
                 )
+            },
+            addTask(newTask) {
+                this.tasks = [...this.tasks, newTask]
+            },
+            showAddTask(){
+                this.showAddTaskForm = !this.showAddTaskForm
             }
         },
-        emits: ['delete-task'],
+        emits: ['delete-task', 'add-task'],
         created() {
             this.tasks = [
                 {
