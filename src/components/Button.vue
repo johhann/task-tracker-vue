@@ -18,5 +18,12 @@
 </script>
 
 <style scoped>
-
+    button{
+        float: right;
+        padding: 10px;
+        size: 20px;
+        font-weight: bold;
+        color: aliceblue;
+        border-radius: 3px;
+    }
 </style>

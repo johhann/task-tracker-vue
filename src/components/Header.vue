@@ -1,10 +1,10 @@
 <template>
-    <h2>Task Tracker</h2>
-    <Button title="Add Task" color="green" />
+    <h2>Task Tracker <Button title="Add Task" color="green" /></h2>
+
 </template>
 
 <script>
-    import Button from "./components/Button";
+    import Button from "../components/Button";
     export default {
         name: "Header",
         components: {
